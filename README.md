@@ -13,7 +13,8 @@ Implementation
 
 
 noop-ko submission
-<iframe width="320" height="240" src="https://www.youtube.com/embed/4Do4imtQW9g" frameborder="0" allowfullscreen></iframe>
+
+[<img src="mqdefault.jpg" />](https://youtu.be/4Do4imtQW9g)
 
 
 [STANFY]: https://stanfy.com/
