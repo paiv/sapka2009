@@ -1,0 +1,24 @@
+noopko
+CFGAZwADQbmsLE@QaEbyMIE - additional info at launch, configure lexical interpreter
+CFGAfYCOvCuVYLQgqSPWsiQ - engine control access
+CFGAMQkaNOADafwFYDOqkvq - basic clock
+CFGyTmkIyQTmjaMyOknSRWx - extended clock
+CFGAYZSqoWZwhWyivctslwe - Adoption of Additional Resources (AAR)
+CFGyuIKvUASnIMogoBcHUHq - danger detection
+CFGybOYGYaOLaemOeIxusCa - satellite connection
+CFGyBOiVEWrubMTghUwHsQK - sensor activation
+CFGAsQawFIfoHWlIgnSIagd - precision sensor activation
+CFGypSIRqwALmEaSXEZksIt - sattelites different numerical systems support
+CFGyTmsoqIVYBsVuauBEQSu - scanning and detection module
+CFGytuSNklojuvQkEmjWsbU - god mode
+CFGyCsURcPUTYlsgonytKyv - thanks to starcraft
+DMAAyKKCYSuvSUFsm@oyDMn - turn on lexical interpreter
+DMAACEopiFkbGpGNagbAVmt - engine control access
+DMAAxkgbeJYrsvyQBuSiNQu - sattelite control functioning
+DMAyYwiGYVKeswdgblrOFkE - sattelite control virus erasing
+DMAACJcdyNitAMqYxC@wMFO - dna lab
+DMAAmsYxGvmdgnYxejgapOR - dna lab with deep analysis
+DMAAwbKuwGtMnaioDoGVCBk - numerical systems translate problem
+DMAyVWeVAIggeNc@okNWdUp - moving object identification problem
+config CFGAZwADQbmsLE@QaEbyMIE#CFGAfYCOvCuVYLQgqSPWsiQ#CFGAMQkaNOADafwFYDOqkvq#CFGyTmkIyQTmjaMyOknSRWx#CFGAYZSqoWZwhWyivctslwe#CFGyuIKvUASnIMogoBcHUHq#CFGybOYGYaOLaemOeIxusCa#CFGyBOiVEWrubMTghUwHsQK#CFGAsQawFIfoHWlIgnSIagd#CFGypSIRqwALmEaSXEZksIt#CFGyTmsoqIVYBsVuauBEQSu#CFGytuSNklojuvQkEmjWsbU#CFGyCsURcPUTYlsgonytKyv;
+dma DMAAyKKCYSuvSUFsm@oyDMn#DMAACEopiFkbGpGNagbAVmt#DMAAxkgbeJYrsvyQBuSiNQu#DMAyYwiGYVKeswdgblrOFkE#DMAACJcdyNitAMqYxC@wMFO#DMAAmsYxGvmdgnYxejgapOR#DMAAwbKuwGtMnaioDoGVCBk#DMAyVWeVAIggeNc@okNWdUp;

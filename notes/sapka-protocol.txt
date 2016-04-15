@@ -1,0 +1,67 @@
+=== SAPKA protocol ===
+Client
+
+  command ::= [ <move-command> ] [ <action-command> ] ';'
+  move-command ::= 'l' | 'r' | 'u' | 'd' | 's'
+  action-command ::= 'b'
+
+Server
+  info ::= ( <game-info> | <start-round-info> | <map-change-info> | <finish-round-info> | <finish-game-info> ) ';'
+
+  game-info ::= <sapka-init-info> '&' <map-info>
+  sapka-init-info ::= PID <digit>
+  map-info ::= <map-cell-size> <string-terminator> { { <map-symbol> } <string-terminator> }
+  map-cell-size ::= <number>
+  map-symbol ::= '.' | 'X' | 'w'
+
+  start-round-info ::= 'START' <number> '&' <map-info>
+  map-change-info ::= <time-part> '&' <sapkas-part> '&' <changes-part> [ '&' <danger-part>]
+  time-part ::= 'T' <number>
+
+
+  sapkas-part ::= <sapka-info> [ { ',' <sapka-info> } ]
+  sapka-info ::= 'P' <number> <sep> ( <details> | 'dead' )
+  details ::= <x-coord> <sep> <y-coord> <sep> <bombs-left> <sep> <bomb-strength> <sep> <speed> [ <sep> <infected> ]
+  infected ::= 'i'
+  x-coord ::= <number>
+  y-coord ::= <number>
+  bombs-left ::= <number>
+  speed ::= <number>
+
+  changes-part ::= [ <change-info> [ { ',' <change-info> } ] ]
+  change-info ::= <add-info> | <remove-info>
+
+  add-info ::= '+' ( <add-dangerous-substance> | <add-bonus-substance> | <add-hightemp-substance> | <add-destr-substance> | <add-indestr-substance> )
+  add-dangerous-substance ::= '*' <sep> <cell-position> <sep> <damaging-range> <sep> <boom-time>
+  add-bonus-substance ::= <bonus-type> <sep> <cell-position>
+  add-destr-substance ::= 'w' <sep> <cell-position>
+  add-indestr-substance ::= 'X' <sep> <cell-position>
+  add-hightemp-substance ::= '#' <sep> <cell-position> <sep> <damaging-range> <sep> <end-time>
+  boom-time ::= <number>
+  end-time ::= <number>
+
+  remove-info ::= '-' ( <remove-dangerous-substance> | <remove-bonus-substance> | <remove-hightemp-substance> | <remove-destr-substance> )
+  remove-dangerous-substance ::= '*' <sep> <cell-position>
+  remove-bonus-substance ::= <bonus-type> <sep> <cell-position>
+  remove-hightemp-substance ::= '#' <sep> <cell-position> <sep> <damaging-range>
+  remove-destr-substance ::= 'w' <sep> <cell-position>
+
+  bonus-type ::= 'b' | 'v' | 'f' | 'r' | 's' | 'u' | 'o' | '?'
+  damaging-range ::= <number>
+  cell-position ::= <x-cell> <sep> <y-cell>
+  x-cell ::= <number>
+  y-cell ::= <number>
+
+  danger-part ::= 'd' <sep> <danger-level>
+  danger-level ::= <number>
+
+  finish-round-info ::= 'REND' <sep> <score>
+  finish-game-info ::= 'GEND' <sep> <rank-score-info>
+  rank-score-info ::= 'P' <number> <sep> <score> <sep> <rank> [ ',' 'P' <number> <sep> <score> <sep> <rank> ]
+  score ::= <number>
+  rank ::= <number>
+
+ sep ::= ' '
+ string-terminator ::= '\r\n'
+ number ::= { <digit> }
+ digit ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{157507BB-18F8-4C58-BD89-C266C3F186F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Archer.Sapka</RootNamespace>
+    <AssemblyName>Archer.Sapka</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin-net\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GoldParser, Version=2.1.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\GoldParser.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\MapChangeEventArgs.cs" />
+    <Compile Include="Client\PacketDispatcher.cs" />
+    <Compile Include="Client\SapkaFinishGameEventArgs.cs" />
+    <Compile Include="Client\SapkaFinishRoundEventArgs.cs" />
+    <Compile Include="Client\SapkaGameEventArgs.cs" />
+    <Compile Include="Client\SapkaVisualizer.cs" />
+    <Compile Include="Client\SapkaVisualizerConsole.cs" />
+    <Compile Include="Client\ServerMessageEventArgs.cs" />
+    <Compile Include="Parser\Ast\AbstractNodeList.cs" />
+    <Compile Include="Parser\Ast\AddInfoNode.cs" />
+    <Compile Include="Parser\Ast\ASTNode.cs" />
+    <Compile Include="Parser\Ast\BombNode.cs" />
+    <Compile Include="Parser\Ast\CellPositionNode.cs" />
+    <Compile Include="Parser\Ast\ChangeInfoNode.cs" />
+    <Compile Include="Parser\Ast\ChangesListNode.cs" />
+    <Compile Include="Parser\Ast\FinishGameNode.cs" />
+    <Compile Include="Parser\Ast\FinishRoundNode.cs" />
+    <Compile Include="Parser\Ast\GameInfoNode.cs" />
+    <Compile Include="Parser\Ast\HighTempNode.cs" />
+    <Compile Include="Parser\Ast\MapChangeNode.cs" />
+    <Compile Include="Parser\Ast\MapDataLineNode.cs" />
+    <Compile Include="Parser\Ast\MapDataNode.cs" />
+    <Compile Include="Parser\Ast\MapInfoNode.cs" />
+    <Compile Include="Parser\Ast\MapItemNode.cs" />
+    <Compile Include="Parser\Ast\NonTerminalNode.cs" />
+    <Compile Include="Parser\Ast\PlayerInfoNode.cs" />
+    <Compile Include="Parser\Ast\PlayerScoreNode.cs" />
+    <Compile Include="Parser\Ast\RankScoreNode.cs" />
+    <Compile Include="Parser\Ast\RemoveInfoNode.cs" />
+    <Compile Include="Parser\Ast\SapkaInfoListNode.cs" />
+    <Compile Include="Parser\Ast\StartRoundNode.cs" />
+    <Compile Include="Parser\Ast\ValueNode.cs" />
+    <Compile Include="Parser\Ast\SapkaDataNode.cs" />
+    <Compile Include="Parser\Ast\SapkaInfoNode.cs" />
+    <Compile Include="Parser\ParserFactory.cs" />
+    <Compile Include="Parser\RuleConstants.cs" />
+    <Compile Include="Parser\RuleException.cs" />
+    <Compile Include="Parser\SapkaParserContext.cs" />
+    <Compile Include="Parser\SymbolConstants.cs" />
+    <Compile Include="Parser\SymbolException.cs" />
+    <Compile Include="Parser\Ast\TerminalNode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Client\SapkaClient.cs" />
+    <Compile Include="Parser\SapkaParser.cs" />
+    <Compile Include="Client\SapkaPacketEventArgs.cs" />
+    <Compile Include="Client\SapkaReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Parser\sapka.cgt" />
+    <None Include="Parser\sapka.grm" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

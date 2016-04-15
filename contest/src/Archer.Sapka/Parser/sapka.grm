@@ -1,0 +1,106 @@
+"Name"     = 'Sapka'
+"Author"   = 'Pavel Ivashkov <pasha@archer-soft.com>'
+"Version"  = '1.2'
+"About"    = 'Sapka contest March 2009'
+
+"Start Symbol" = <sapka-data>
+
+! ------------------------------------------------- Sets
+
+{WS} = {Whitespace} - {Space} - {CR} - {LF}
+Whitespace = {WS}+
+
+
+! ------------------------------------------------- Terminals
+
+sep    = {Space}
+number = '-'? {Number}+
+string-terminator = {CR}{LF}
+
+! ------------------------------------------------- Rules
+
+<sapka-data> ::= <info> <sapka-data>
+	|
+<info> ::= <info-term> ';'
+
+<info-term> ::= <game-info> 
+	| <start-round-info>
+	| <map-change-info>
+	| <finish-round-info>
+	| <finish-game-info>
+
+<game-info> ::= <sapka-init-info> '&' <map-info>
+<sapka-init-info> ::= 'PID' number
+<map-info> ::= <map-cell-size> string-terminator <map-data>
+<map-cell-size> ::= number
+<map-data> ::= <map-data-line> string-terminator <map-data>
+	| <map-data-line> string-terminator
+<map-data-line> ::= <map-symbol> <map-data-line>
+	| <map-symbol>
+<map-symbol> ::= '.' | 'X' | 'w'
+
+<start-round-info> ::= 'START' number '&' <map-info>
+
+<map-change-info> ::= <time-part> '&' <sapkas-part> '&' <changes-part> '&' <danger-part>
+	| <time-part> '&' <sapkas-part> '&' <changes-part>
+<time-part> ::= 'T' number
+
+<sapkas-part> ::= <sapka-info> ',' <sapkas-part>
+	| <sapka-info>
+<sapka-info> ::= 'P' number sep <sapka-info-ex>
+<sapka-info-ex> ::= <details> | 'dead'
+<details> ::= <x-coord> sep <y-coord> sep <bombs-left> sep <bomb-strength> sep <speed> sep <infected>
+	| <x-coord> sep <y-coord> sep <bombs-left> sep <bomb-strength> sep <speed>
+<infected> ::= 'i'
+<x-coord> ::= number
+<y-coord> ::= number
+<bombs-left> ::= number
+<bomb-strength> ::= number
+<speed> ::= number
+
+<changes-part> ::= <change-info> ',' <changes-part>
+	| <change-info>
+	|
+<change-info> ::= <add-info> | <remove-info>
+
+<add-info> ::= '+' <add-substance>
+<add-substance> ::= <add-dangerous-substance>
+	| <add-bonus-substance>
+	| <add-hightemp-substance>
+	| <add-destr-substance>
+	| <add-indestr-substance>
+<add-dangerous-substance> ::= '*' sep <cell-position> sep <damaging-range> sep <boom-time>
+<add-bonus-substance> ::= <bonus-type> sep <cell-position>
+<add-destr-substance> ::= 'w' sep <cell-position>
+<add-indestr-substance> ::= 'X' sep <cell-position>
+<add-hightemp-substance> ::= '#' sep <cell-position> sep <damaging-range> sep <end-time>
+<boom-time> ::= number
+<end-time> ::= number
+
+<remove-info> ::= '-' <remove-substance>
+<remove-substance> ::= <remove-dangerous-substance>
+	| <remove-bonus-substance>
+	| <remove-hightemp-substance>
+	| <remove-destr-substance>
+<remove-dangerous-substance> ::= '*' sep <cell-position>
+<remove-bonus-substance> ::= <bonus-type> sep <cell-position>
+<remove-hightemp-substance> ::= '#' sep <cell-position>
+<remove-destr-substance> ::= 'w' sep <cell-position>
+
+<bonus-type> ::= 'b' | 'v' | 'f' | 'r' | 's' | 'u' | 'o' | '?'
+<damaging-range> ::= number
+<cell-position> ::= <x-cell> sep <y-cell>
+<x-cell> ::= number
+<y-cell> ::= number
+
+<danger-part> ::= 'd' sep <danger-level>
+<danger-level> ::= number
+
+<finish-round-info> ::= 'REND' sep <score>
+<finish-game-info> ::= 'GEND' sep <rank-score-info>
+
+<rank-score-info> ::= <player-score> ',' <rank-score-info>
+	| <player-score>
+<player-score> ::= 'P' number sep <score> sep <rank>
+<score> ::= number
+<rank> ::= number
